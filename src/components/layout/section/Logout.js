@@ -9,10 +9,9 @@ export default function Logout() {
 
   async function handleLogout() {
     setError("");
-
     try {
       await logout();
-      history.push("/login");
+      // history.push("/login");
     } catch {
       setError("Failed to log out");
     }
@@ -23,9 +22,9 @@ export default function Logout() {
   return (
     <div style={style}>
       {error && <h2>{error}</h2>}
-      <strong>Email:</strong> {currentUser.email}
       <div className="card">
-        <h2>Are you sure you want to sign out</h2>
+        <h2>{currentUser.email}</h2>
+        <h4>Are you sure you want to sign out</h4>
         <p>Please Sign in to Continue</p>
         <button
           variant="link"

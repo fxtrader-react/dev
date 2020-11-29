@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.19.2",
+    "crypto-news-api": "^2.2.2",
     "dotenv": "^8.2.0",
     "firebase": "^7.24.0",
     "firebaseui": "^4.6.1",

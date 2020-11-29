@@ -4,11 +4,11 @@ import LeftSideIcon from "../layout/aside/LeftSideIcon";
 
 const LeftSidebar = () => {
   const value = useContext(GlobalContext);
-  const [isToggled, setIsToggled] = useState(true);
+  // const [isToggled, setIsToggled] = useState(true);
 
-  const handleToggle = () => {
-    setIsToggled(!isToggled);
-  };
+  // const handleToggle = () => {
+  //   setIsToggled(!isToggled);
+  // };
 
   const ListIcons = value.menus.map((menu, index) => (
     <LeftSideIcon
@@ -16,7 +16,7 @@ const LeftSidebar = () => {
       index={index}
       icon={menu.iconName}
       menu={menu.menuName}
-      handleToggle={handleToggle}
+      // handleToggle={handleToggle}
       setCurrentTab={value.setCurrentTab}
       currentTab={value.currentTab}
     />

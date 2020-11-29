@@ -25,9 +25,10 @@ export default function Signin() {
   }
 
   return (
-    <>
+    <div className="auth-container">
       {error && <h4 style={{ color: "white" }}>{error}</h4>}{" "}
-      <div className="card login-panel">
+      <div className="card">
+        <h1>Crypto Hub</h1>
         <form onSubmit={handleSubmit}>
           {" "}
           <input
@@ -52,6 +53,6 @@ export default function Signin() {
           </div>
         </form>
       </div>
-    </>
+    </div>
   );
 }

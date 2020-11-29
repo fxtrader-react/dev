@@ -25,7 +25,7 @@ export default function Header() {
               onClick={() => value.setOverlayState(!value.overlayState)}
             >
               <div className="right-header-component">
-                <img alt="Avatar" src={require("../images/vader.jpg")} />
+                <img alt="Avatar" src={require("../images/high-rise.jpg")} />
                 <div id="username">
                   {/* <p>{currentUser.email}</p> */}
                   <MdArrowDropDown />
@@ -34,6 +34,9 @@ export default function Header() {
             </a>
             <a target="_blank">
               <FaBell />
+            </a>
+            <a>
+              <p>$0.0</p>
             </a>
           </li>
         </ul>

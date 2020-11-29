@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import AssetTable from "../section/AssetTable";
+import TradeviewChart from "../section/TradeviewChart";
 
 export default function Wallet() {
   const clickedDeposit = () => {
@@ -11,10 +12,11 @@ export default function Wallet() {
   };
   return (
     <React.Fragment>
+      <TradeviewChart />
       <button onClick={() => clickedDeposit()}>Deposit</button>
       <button onClick={() => clickedWithdraw()}>Withdraw</button>
 
-      <AssetTable />
+      {/* <AssetTable /> */}
     </React.Fragment>
   );
 }

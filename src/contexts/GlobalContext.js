@@ -19,7 +19,7 @@ import {
 export const GlobalContext = createContext();
 
 export const GlobalProvider = (props) => {
-  const [selectedSymbol, setSelectedSymbol] = useState("BTCUSDT");
+  const [selectedSymbol, setSelectedSymbol] = useState("BTCUSD");
   const [currentTab, setCurrentTab] = useState(0);
   const [overlayState, setOverlayState] = useState(false);
 
@@ -33,11 +33,11 @@ export const GlobalProvider = (props) => {
     { menuName: "Invest", section: Invest, iconName: AiFillDollarCircle },
     { menuName: "Exchange", section: Exchange, iconName: FaExchangeAlt },
     { menuName: "Support", section: Support, iconName: MdHelp },
-    {
-      menuName: "Logout",
-      section: Logout,
-      iconName: MdPowerSettingsNew,
-    },
+    // {
+    //   menuName: "Logout",
+    //   section: Logout,
+    //   iconName: MdPowerSettingsNew,
+    // },
   ];
 
   const section = menus[currentTab].section;

@@ -12,13 +12,11 @@ function App() {
     <Router>
       <AuthProvider>
         <GlobalProvider>
-          <div className="App">
-            <Switch>
-              <PrivateRoute exact path="/" component={Main} />
-              <Route path="/login" component={Login} />
-              <Route path="/signup" component={Signup} />
-            </Switch>
-          </div>
+          <Switch>
+            <PrivateRoute exact path="/" component={Main} />
+            <Route path="/login" component={Login} />
+            <Route path="/signup" component={Signup} />
+          </Switch>
         </GlobalProvider>
       </AuthProvider>
     </Router>

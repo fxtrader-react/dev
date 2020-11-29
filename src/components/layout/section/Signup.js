@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { useAuth } from "../../../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
 import { projectFirestore } from "../../../firebase/config";
+import moment from "moment";
 
 export default function Signup() {
   const [error, setError] = useState("");
@@ -20,6 +21,10 @@ export default function Signup() {
       .add({
         username: usernameRef.current.value,
         email: emailRef.current.value,
+        date_created: moment().format("DD-MM-YYYY hh:mm:ss"),
+        balance: 0,
+        purchases: 0,
+        unread: 0,
         //createdAt: projectFirestore.fieldValue.serverTimestamp(),
       })
       .then(function (docRef) {
@@ -33,9 +38,9 @@ export default function Signup() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    // if (passwordRef.current.value !== passwordConfirmationRef.current.value) {
-    //   return setError("Passwords do not match");
-    // }
+    if (passwordRef.current.value !== passwordConfirmationRef.current.value) {
+      return setError("Passwords do not match");
+    }
     try {
       console.log(1);
       setError("");
@@ -51,10 +56,11 @@ export default function Signup() {
   }
 
   return (
-    <div className="container">
+    <div className="auth-container">
       {error && <h4 style={{ color: "white" }}>{error}</h4>}{" "}
       <div className="card">
-        <form onSubmit={handleSubmit}>
+        <h1>Crypto Hub</h1>
+        <form onSubmit={handleSubmit} autocomplete="off">
           {" "}
           <input
             type="text"
@@ -78,15 +84,16 @@ export default function Signup() {
             placeholder="Password"
             ref={passwordRef}
           />
-          {/* <input
+          <input
             type="password"
             className="form-control"
             id="password-confirm"
             placeholder="Password Confirmation"
             ref={passwordConfirmationRef}
-          /> */}
+          />
           <button disabled={loading}>Sign Up</button>
         </form>
+        <Link to="/login">Login</Link>
       </div>
     </div>
   );

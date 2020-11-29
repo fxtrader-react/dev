@@ -1,38 +1,10 @@
 import React from "react";
+import AssetTable from "./AssetTable";
 
 export default function Exchange() {
   return (
     <React.Fragment>
-      <div className="card">
-        <p>btc-usdt</p>
-        <input></input>
-        <p>buy</p>
-        <input></input>
-        <p>sell</p>
-        <br />
-        <h3>History</h3>
-      </div>
-      <table>
-        <thead>
-          <tr>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>Age</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Jill</td>
-            <td>Smith</td>
-            <td>50</td>
-          </tr>
-          <tr>
-            <td>Eve</td>
-            <td>Jackson</td>
-            <td>94</td>
-          </tr>
-        </tbody>
-      </table>
+      <AssetTable />
     </React.Fragment>
   );
 }
