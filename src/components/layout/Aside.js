@@ -6,6 +6,7 @@ import Wallet from "./section/Wallet";
 import Support from "./section/Support";
 import Exchange from "./section/Exchange";
 import Logout from "./section/Logout";
+import { routes } from "../../helpers";
 
 import {
   AiOutlineBarChart,
@@ -41,41 +42,6 @@ const Aside = (props) => {
   //   setSection(selected);
   // }
 
-  const routes = [
-    {
-      path: "/Dashboard",
-      name: "Dashboard",
-      // exact: true,
-      icon: AiOutlineBarChart,
-      component: Dashboard,
-      // sidebar: () => <div>home</div>,
-      // main: () => <h2>Home</h2>,
-    },
-    {
-      path: "/Wallet",
-      name: "Wallet",
-      icon: FaWallet,
-      component: Wallet,
-    },
-    {
-      path: "/Invest",
-      name: "Invest",
-      icon: AiFillDollarCircle,
-      component: Invest,
-    },
-    {
-      path: "/Exchange",
-      name: "Exchange",
-      icon: FaExchangeAlt,
-      component: Exchange,
-    },
-    {
-      path: "/Support",
-      name: "Support",
-      icon: MdHelp,
-      component: Support,
-    },
-  ];
   const [currentTab, setCurrentTab] = useState(0);
 
   function clicked(tab) {
@@ -90,13 +56,13 @@ const Aside = (props) => {
       onClick={() => clicked(index)}
       style={{ cursor: "pointer" }}
       id={route.name === props.paramId || iconHovered === true ? "active" : ""}
-      onMouseEnter={() => setIconHovered(index)}
+      onMouseEnter={() => setIconHovered(props.paramId)}
       onMouseLeave={() => setIconHovered()}
     >
       <div className="sidebar-icon">
         <route.icon />
       </div>
-      <div className="sidebar-menu">{route.name}</div>
+      <div className="sidebar-menu">{route.text}</div>
     </div>
   ));
 

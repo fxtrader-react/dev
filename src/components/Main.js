@@ -17,7 +17,7 @@ export default function Main({ match }) {
         <SectionSidebar />
         <div className="main">
           <Aside paramId={match.params.id} />
-          <Section paramId={match.params.id} component={result.component} />
+          <Section paramId={result.text} component={result.component} />
         </div>
       </>
     );
