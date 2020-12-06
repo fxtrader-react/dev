@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 export const useFetch = () => {
   const [apiData, setAPIData] = useState();
+  const [section, setSection] = useState();
 
   useEffect(() => {
     fetch("https://api.coingecko.com/api/v3/coins/")

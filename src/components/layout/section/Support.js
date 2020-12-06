@@ -108,10 +108,10 @@ export default function Support() {
 
   return (
     <>
-      <button>Create new</button>
+      {/* <button>Create new</button>
       <button disabled={loading} onClick={deleteAllMessages}>
         Delete all
-      </button>
+      </button> */}
 
       <div className="support-container">
         {/* <div style={{ backgroundColor: "red", minWidth: "30%" }}> */}

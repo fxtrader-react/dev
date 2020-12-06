@@ -13,6 +13,7 @@ export default function SectionSidebar() {
     setError("");
     try {
       await logout();
+      value.setOverlayState(!value.overlayState);
       // history.push("/login");
     } catch {
       setError("Failed to log out");

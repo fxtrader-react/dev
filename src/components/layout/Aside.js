@@ -1,28 +1,106 @@
 import React, { useContext, useState } from "react";
-import { GlobalContext } from "../../contexts/GlobalContext";
-import LeftSideIcon from "../layout/aside/LeftSideIcon";
+import { Link, useHistory } from "react-router-dom";
+import Dashboard from "./section/Dashboard";
+import Invest from "./section/Invest";
+import Wallet from "./section/Wallet";
+import Support from "./section/Support";
+import Exchange from "./section/Exchange";
+import Logout from "./section/Logout";
 
-const LeftSidebar = () => {
-  const value = useContext(GlobalContext);
-  // const [isToggled, setIsToggled] = useState(true);
+import {
+  AiOutlineBarChart,
+  AiFillDollarCircle,
+  FaWallet,
+  MdHelp,
+  MdPowerSettingsNew,
+  FaExchangeAlt,
+} from "react-icons/all";
 
-  // const handleToggle = () => {
-  //   setIsToggled(!isToggled);
-  // };
+const Aside = (props) => {
+  const history = useHistory();
+  const [iconHovered, setIconHovered] = useState();
 
-  const ListIcons = value.menus.map((menu, index) => (
-    <LeftSideIcon
+  const menus = [
+    {
+      menuName: "Dashboard",
+      section: Dashboard,
+      iconName: AiOutlineBarChart,
+    },
+    { menuName: "Wallet", section: Wallet, iconName: FaWallet },
+    { menuName: "Invest", section: Invest, iconName: AiFillDollarCircle },
+    { menuName: "Exchange", section: Exchange, iconName: FaExchangeAlt },
+    { menuName: "Support", section: Support, iconName: MdHelp },
+    {
+      menuName: "Logout",
+      section: Logout,
+      iconName: MdPowerSettingsNew,
+    },
+  ];
+
+  // function clicked(selected) {
+  //   setSection(selected);
+  // }
+
+  const routes = [
+    {
+      path: "/Dashboard",
+      name: "Dashboard",
+      // exact: true,
+      icon: AiOutlineBarChart,
+      component: Dashboard,
+      // sidebar: () => <div>home</div>,
+      // main: () => <h2>Home</h2>,
+    },
+    {
+      path: "/Wallet",
+      name: "Wallet",
+      icon: FaWallet,
+      component: Wallet,
+    },
+    {
+      path: "/Invest",
+      name: "Invest",
+      icon: AiFillDollarCircle,
+      component: Invest,
+    },
+    {
+      path: "/Exchange",
+      name: "Exchange",
+      icon: FaExchangeAlt,
+      component: Exchange,
+    },
+    {
+      path: "/Support",
+      name: "Support",
+      icon: MdHelp,
+      component: Support,
+    },
+  ];
+  const [currentTab, setCurrentTab] = useState(0);
+
+  function clicked(tab) {
+    setCurrentTab(tab);
+    history.push(`${routes[tab].path}`);
+  }
+
+  const renderIcons = routes.map((route, index) => (
+    <div
       key={index}
-      index={index}
-      icon={menu.iconName}
-      menu={menu.menuName}
-      // handleToggle={handleToggle}
-      setCurrentTab={value.setCurrentTab}
-      currentTab={value.currentTab}
-    />
+      className="sidebar-component"
+      onClick={() => clicked(index)}
+      style={{ cursor: "pointer" }}
+      id={route.name === props.paramId || iconHovered === true ? "active" : ""}
+      onMouseEnter={() => setIconHovered(index)}
+      onMouseLeave={() => setIconHovered()}
+    >
+      <div className="sidebar-icon">
+        <route.icon />
+      </div>
+      <div className="sidebar-menu">{route.name}</div>
+    </div>
   ));
 
-  return <aside>{ListIcons}</aside>;
+  return <aside>{renderIcons}</aside>;
 };
 
-export default LeftSidebar;
+export { Aside };

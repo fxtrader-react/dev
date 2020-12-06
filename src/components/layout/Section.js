@@ -1,19 +1,15 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../../contexts/GlobalContext";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-const Section = () => {
+const Section = (props) => {
   const value = useContext(GlobalContext);
-  const SectionContent = value.section;
-
+  const SectionContent = props.component;
   return (
     <>
-      <Router>
-        <section className="section-container">
-          <h3 style={{ color: "white" }}>{value.menuName}</h3>
-          <SectionContent />
-        </section>
-      </Router>
+      <section className="section-container">
+        <h3 style={{ color: "white" }}>{props.paramId}</h3>
+        <SectionContent />
+      </section>
     </>
   );
 };

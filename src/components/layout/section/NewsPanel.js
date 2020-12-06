@@ -15,7 +15,6 @@ export default function NewsPanel() {
   const fetchNews = () => {
     Api.getTopNewsByCoin("bitcoin")
       .then(function (articles) {
-        console.log(articles);
         setData(articles);
       })
       .catch(function (error) {
